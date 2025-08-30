@@ -1,26 +1,51 @@
-📘 Calculadora de Notas dos Alunos
+📘 StudentGradeCalculator
 📖 Descrição
 
-Este projeto é uma aplicação simples em C# .NET que calcula automaticamente as médias de notas dos alunos em uma turma.
-A ideia é automatizar o processo de avaliação, exibindo a nota final de cada estudante junto com o conceito correspondente (A, B, etc).
+O StudentGradeCalculator é um programa em C# .NET que calcula o desempenho de estudantes com base em suas notas.
+O projeto evoluiu ao longo do desenvolvimento, recebendo novas funcionalidades para tornar o cálculo mais realista e completo.
 
-⚙️ Funcionalidades
+🆕 Histórico de Atualizações
+✅ Versão 1.0 – Cálculo simples
 
-Cálculo automático da média das notas de cada aluno.
+Calculava apenas a média numérica das notas.
 
-Exibição formatada de nome do aluno, média final e conceito.
+Exibia um relatório básico no console com o nome do aluno e sua média.
 
-Exemplo prático de uso de variáveis, operadores matemáticos e Console.WriteLine em C#.
-🧑‍🎓 Exemplo de saída
-Student     Grade
+🔄 Versão 2.0 – Notas extras e conceito em letra
 
-Sophia      94.6    A
-Nicolas     83.6    B
-Zahirah     83.4    B
-Jeong       95.4    A
+Adicionada a lógica para considerar apenas as 5 primeiras avaliações como provas principais.
 
-🛠️ Tecnologias utilizadas
+Novo recurso: trabalhos extras contam como bônus, equivalentes a 10% da nota recebida.
 
-Linguagem: C#
+Implementado sistema de conversão da média para nota em letra (A+ até F).
 
-Plataforma: .NET
+Melhorado o relatório no console, exibindo:
+
+Nome do estudante
+
+Nota final numérica
+
+Nota final em letra
+
+⚙️ Funcionalidades atuais
+
+Armazena notas de múltiplos estudantes.
+
+Considera provas principais e bônus de trabalhos extras.
+
+Calcula a média final de cada aluno.
+
+Converte automaticamente a média para conceito em letra.
+
+Exibe relatório formatado no console.
+
+🧑‍💻 Exemplo de saída
+Student         Grade
+Sophia          92.8    A-
+Andrew          89.2    B+
+Emma            85.8    B
+Logan           92.2    A-
+Becky           91.2    A-
+Chris           89.2    B+
+Eric            82.0    B-
+Gregor          91.0    A-
