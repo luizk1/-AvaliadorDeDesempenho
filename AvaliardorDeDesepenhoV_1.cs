@@ -1,84 +1,148 @@
 ﻿// Study Grading
 
 /* 
-Visão geral do projeto
-Você está desenvolvendo um aplicativo student grading que automatiza o cálculo das notas atuais para cada aluno em uma classe. Os parâmetros para seu aplicativo são:
+🔎 Visão Geral do Projeto
 
-Você recebeu uma pequena lista de quatro alunos com as notas das cinco tarefas que eles realizaram.
-Cada nota é expressa como um valor inteiro de 0 a 100, em que 100 representa 100% de acerto.
-As pontuações finais são calculadas pela média das cinco notas de tarefas.
-Seu aplicativo precisa executar operações matemáticas básicas para calcular as notas finais para cada aluno.
-Seu aplicativo precisa produzir/exibir o nome e a pontuação final de cada aluno.
+Versão 1.0 – Funcionalidades iniciais
+-------------------------------------
+- Lista de 4 estudantes, cada um com 5 notas.
+- Notas de 0 a 100.
+- Cálculo da média aritmética das 5 notas.
+- Exibição no console do nome do aluno + média final.
 
-*/
-
-
-
-// App usado para calcular media de nota dos alunos & nota geral da sala
-
-/* notas e alunos de exemplo
-Sophia: 93, 87, 98, 95, 100
-
-Nicolas: 80, 83, 82, 88, 85
-
-Zahirah:   84, 96, 73, 85, 79
-
-Jeong:  90, 92, 98, 100, 97
+Versão 2.0 – Novas funcionalidades
+-------------------------------------
+- Expansão da lista para 8 estudantes.
+- Consideração das 5 primeiras notas como provas principais.
+- Atividades extras adicionadas como bônus (10% da nota).
+- Conversão da média em nota conceitual (A+ até F).
+- Relatório final exibe:
+    • Nome do aluno
+    • Nota numérica final
+    • Nota em letra (conceito)
 
 */
-/*  mandeira de de exibir no codigo fianl
-Student     Grade
-Sophia      94.6  A
-Nicolas     83.6  B
-Zahirah     83.4  B
-Jeong       95.4  A
-*/
 
 
 
-// variaveis de inicializacao - grade de tarefas
+// initialize variables - graded assignments
+int examAssignments = 5;
+
+int[] sophiaScores = new int[] { 90, 86, 87, 98, 100, 94, 90 };
+int[] andrewScores = new int[] { 92, 89, 81, 96, 90, 89 };
+int[] emmaScores = new int[] { 90, 85, 87, 98, 68, 89, 89, 89 };
+int[] loganScores = new int[] { 90, 95, 87, 88, 96, 96 };
+int[] beckyScores = new int[] { 92, 91, 90, 91, 92, 92, 92 };
+int[] chrisScores = new int[] { 84, 86, 88, 90, 92, 94, 96, 98 };
+int[] ericScores = new int[] { 80, 90, 100, 80, 90, 100, 80, 90 };
+int[] gregorScores = new int[] { 91, 91, 91, 91, 91, 91, 91 };
+
+// Student names
+string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor" };
 
 
+int[] studentScores = new int[10];
 
-int currentAssignments = 5;
+string currentStudentLetterGrade = "";
 
-int sophia1 = 93;
-int sophia2 = 87;
-int sophia3 = 98;
-int sophia4 = 95;
-int sophia5 = 100;
-
-int nicolas1 = 80;
-int nicolas2 = 83;
-int nicolas3 = 82;
-int nicolas4 = 88;
-int nicolas5 = 85;
-
-int zahirah1 = 84;
-int zahirah2 = 96;
-int zahirah3 = 73;
-int zahirah4 = 85;
-int zahirah5 = 79;
-
-int jeong1 = 90;
-int jeong2 = 92;
-int jeong3 = 98;
-int jeong4 = 100;
-int jeong5 = 97;
-
-int sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-int nicolasSum = nicolas1 + nicolas2 + nicolas3 + nicolas4 + nicolas5;
-int zahirahSum = zahirah1 + zahirah2 + zahirah3 + zahirah4 + zahirah5;
-int jeongSum = jeong1 + jeong2 + jeong3 + jeong4 + jeong5;
-
-decimal sophiaScore = (decimal) sophiaSum / currentAssignments;
-decimal nicolasScore = (decimal) nicolasSum / currentAssignments;
-decimal zahirahScore = (decimal) zahirahSum / currentAssignments;
-decimal jeongScore =  (decimal) jeongSum / currentAssignments;
-
-
+// Write the Report Header to the console
 Console.WriteLine("Student\t\tGrade\n");
-Console.WriteLine("Sophia:\t\t" + sophiaScore + "\tA");
-Console.WriteLine("Nicolas:\t" + nicolasScore + "\tB");
-Console.WriteLine("Zahirah:\t" + zahirahScore + "\tB");
-Console.WriteLine("Jeong:\t\t" + jeongScore + "\tA");
+
+foreach (string name in studentNames)
+{
+    string currentStudent = name;
+
+    if (currentStudent == "Sophia")
+        studentScores = sophiaScores;
+
+    else if (currentStudent == "Andrew")
+        studentScores = andrewScores;
+
+    else if (currentStudent == "Emma")
+        studentScores = emmaScores;
+
+    else if (currentStudent == "Logan")
+        studentScores = loganScores;
+    else if (currentStudent == "Becky")
+        studentScores = beckyScores;
+    else if (currentStudent == "Chris")
+        studentScores = chrisScores;
+    else if (currentStudent == "Eric")
+        studentScores = ericScores;
+    else if (currentStudent == "Gregor")
+        studentScores = gregorScores;
+    else
+        continue;
+
+    // initialize/reset the sum of scored assignments
+    int sumAssignmentScores = 0;
+
+    // initialize/reset the calculated average of exam + extra credit scores
+    decimal currentStudentGrade = 0;
+
+    // initialize/reset a counter for the number of assignment 
+    int gradedAssignments = 0;
+
+    // loop through the scores array and complete calculations for currentStudent
+    foreach (int score in studentScores)
+    {
+        // increment the assignment counter
+        gradedAssignments += 1;
+
+        if (gradedAssignments <= examAssignments)
+            // add the exam score to the sum
+            sumAssignmentScores += score;
+
+        else
+            // add the extra credit points to the sum - bonus points equal to 10% of an exam score
+            sumAssignmentScores += score / 10;
+    }
+
+    currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+
+    if (currentStudentGrade >= 97)
+        currentStudentLetterGrade = "A+";
+
+    else if (currentStudentGrade >= 93)
+        currentStudentLetterGrade = "A";
+
+    else if (currentStudentGrade >= 90)
+        currentStudentLetterGrade = "A-";
+
+    else if (currentStudentGrade >= 87)
+        currentStudentLetterGrade = "B+";
+
+    else if (currentStudentGrade >= 83)
+        currentStudentLetterGrade = "B";
+
+    else if (currentStudentGrade >= 80)
+        currentStudentLetterGrade = "B-";
+
+    else if (currentStudentGrade >= 77)
+        currentStudentLetterGrade = "C+";
+
+    else if (currentStudentGrade >= 73)
+        currentStudentLetterGrade = "C";
+
+    else if (currentStudentGrade >= 70)
+        currentStudentLetterGrade = "C-";
+
+    else if (currentStudentGrade >= 67)
+        currentStudentLetterGrade = "D+";
+
+    else if (currentStudentGrade >= 63)
+        currentStudentLetterGrade = "D";
+
+    else if (currentStudentGrade >= 60)
+        currentStudentLetterGrade = "D-";
+
+    else
+        currentStudentLetterGrade = "F";
+
+    //Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+}
+
+// required for running in VS Code (keeps the Output windows open to view results)
+Console.WriteLine("\n\rPress the Enter key to continue");
+Console.ReadLine();
