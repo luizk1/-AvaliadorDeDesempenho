@@ -11,3 +11,16 @@ Cálculo automático da média das notas de cada aluno.
 Exibição formatada de nome do aluno, média final e conceito.
 
 Exemplo prático de uso de variáveis, operadores matemáticos e Console.WriteLine em C#.
+🧑‍🎓 Exemplo de saída
+Student     Grade
+
+Sophia      94.6    A
+Nicolas     83.6    B
+Zahirah     83.4    B
+Jeong       95.4    A
+
+🛠️ Tecnologias utilizadas
+
+Linguagem: C#
+
+Plataforma: .NET
